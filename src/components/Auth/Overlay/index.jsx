@@ -1,10 +1,12 @@
 import React, { useContext } from 'react'
-import { AuthContext } from '../../../contexts'
+import { useMyDispatch } from '../../../contexts/Auth'
 import '../index.css'
 
 export default () => {
-  const { state, dispatch } = useContext(AuthContext)
-  console.log(state, 'dari overlay') 
+  // const { state, dispatch } = useContext('')
+  const dispatch = useMyDispatch()
+
+  // console.log(state, 'dari overlay') 
   return (
     <div className="overlay">
       <div className="overlay-panel overlay-left">
