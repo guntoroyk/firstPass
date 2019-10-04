@@ -1,10 +1,9 @@
 import React, { useContext } from 'react'
-import { useMyDispatch } from '../../../contexts/Auth'
+import { AuthContext } from '../../../contexts'
 import '../index.css'
 
 export default () => {
-  // const { state, dispatch } = useContext('')
-  const dispatch = useMyDispatch()
+  const { dispatch } = useContext(AuthContext)
 
   // console.log(state, 'dari overlay') 
   return (

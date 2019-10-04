@@ -1,5 +1,7 @@
 import React from 'react'
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"
+import { Provider } from 'react-redux'
+import store from './redux/store'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
@@ -13,16 +15,18 @@ library.add(fab)
 function App() {
   return (
     <div className="App">
-      <Router>
-        <Switch>
-          <Route path="/auth">
-            <Auth />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
-        </Switch>
-      </Router>
+      <Provider store={ store }>
+        <Router>
+          <Switch>
+            <Route path="/auth">
+              <Auth />
+            </Route>
+            <Route path="/">
+              <Home />
+            </Route>
+          </Switch>
+        </Router>
+      </Provider>
     </div>
   )
 }

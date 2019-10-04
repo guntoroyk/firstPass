@@ -1,16 +1,15 @@
 import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import '../index.css'
-
-import { useMyDispatch } from '../../../contexts/Auth'
-import { signUpWithEmail } from '../../../actions/Auth'
+import { useDispatch } from 'react-redux'
+import { signUpWithEmail } from '../../../redux/actions'
 
 export default () => {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   
-  const dispatch = useMyDispatch()
+  const dispatch = useDispatch()
 
   const handleSignUp = e => {
     e.preventDefault()

@@ -2,21 +2,18 @@ import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import '../index.css'
 
-import { useMyDispatch } from '../../../contexts/Auth'
-import { signInWithEmail } from '../../../actions/Auth'
-
 export default () => {
-  const dispatch = useMyDispatch()
+  // const dispatch = useMyDispatch()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
   const handleSignIn = e => {
-    e.preventDefault()
-    const payload = {
-      email, password
-    }
-    // console.log(payload)
-    dispatch(signInWithEmail(payload))
+    // e.preventDefault()
+    // const payload = {
+    //   email, password
+    // }
+    // // console.log(payload)
+    // dispatch(signInWithEmail(payload))
   }
   return (
     <form onSubmit={handleSignIn}>

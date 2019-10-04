@@ -1,5 +1,5 @@
 import React from 'react'
-import { AuthContext, store } from '../../contexts/Auth'
+import { AuthProvider } from '../../contexts'
 import Auth from '../../components/Auth'
 
 import './index.css'
@@ -7,9 +7,9 @@ import './index.css'
 export default () => {
   return (
     <div className="auth">
-      <AuthContext.Provider value={ store } >
+      <AuthProvider>
         <Auth />
-      </AuthContext.Provider>
+      </AuthProvider>
     </div>
   )
 }
