@@ -1,0 +1,23 @@
+.navbar-custom {
+  background-color: rgba(122, 228, 228, 0.527);
+  /* box-shadow: 3px 10px 23px -8px rgba(122,228,228,1); */
+}
+
+.navbar-brand .icon {
+  color: rgb(255, 255, 255) !important;
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-left: 8px;
+}
+
+.navbar-brand:hover {
+  transform: scale(1.2)
+}
+
+.link {
+  color: rgb(255, 255, 255) !important;
+  font-weight: bold;
+}
+.link:hover {
+  transform: scale(1.2)
+}

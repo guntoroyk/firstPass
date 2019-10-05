@@ -1,36 +1,85 @@
-import { firebaseAuth, db } from '../../apis/firebase'
+import { firebaseAuth } from '../../apis/firebase'
 export const signUpWithEmail = (payload) => dispatch => {
-  console.log('masuk action signup with email', payload)
+  dispatch({
+    type: 'SET_LOADING',
+    payload: true
+  })
   firebaseAuth.createUserWithEmailAndPassword(payload.email, payload.password)
   .then(user => {
     dispatch({
       type: 'SET_USER',
-      payload: user
+      payload: user.user
+    })
+    dispatch({
+      type: 'SET_LOADING',
+      payload: false
     })
   })
   .catch(error => {
-    console.log(error, 'error signup with email')
     dispatch({
       type: 'SET_ERROR',
       payload: error
+    })
+    dispatch({
+      type: 'SET_LOADING',
+      payload: false
     })
   })
 }
 
 export const signInWithEmail = (payload) => dispatch => {
-  console.log('masuk action signin with email', payload)
-  // firebaseAuth.signInWithEmailAndPassword(payload.email, payload.password)
-  // .then(user => {
-  //   dispatch({
-  //     type: 'SET_USER',
-  //     payload: user
-  //   })
-  // })
-  // .catch(error => {
-  //   console.log(error)
-  //   dispatch({
-  //     type: 'SET_ERROR',
-  //     payload: error
-  //   })
-  // })
+  dispatch({
+    type: 'SET_LOADING',
+    payload: true
+  })
+  firebaseAuth.signInWithEmailAndPassword(payload.email, payload.password)
+  .then(user => {
+    dispatch({
+      type: 'SET_USER',
+      payload: user.user
+    })
+    dispatch({
+      type: 'SET_LOADING',
+      payload: false
+    })
+  })
+  .catch(error => {
+    console.log(error)
+    dispatch({
+      type: 'SET_ERROR',
+      payload: error
+    })
+    dispatch({
+      type: 'SET_LOADING',
+      payload: false
+    })
+  })
+}
+
+export const checkLoggedUser = () => dispatch => {
+  dispatch({
+    type: 'SET_LOADING',
+    payload: true
+  })
+  firebaseAuth.onAuthStateChanged(user => {
+    if (user) {
+      dispatch({
+        type: 'SET_USER',
+        payload: user
+      })
+      dispatch({
+        type: 'SET_LOADING',
+        payload: true
+      })
+    } else {
+      dispatch({
+        type: 'SET_USER',
+        payload: null
+      })
+      dispatch({
+        type: 'SET_LOADING',
+        payload: true
+      })
+    }
+  })
 }

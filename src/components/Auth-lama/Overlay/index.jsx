@@ -5,7 +5,6 @@ import '../index.css'
 export default () => {
   const { dispatch } = useContext(AuthContext)
 
-  // console.log(state, 'dari overlay') 
   return (
     <div className="overlay">
       <div className="overlay-panel overlay-left">

@@ -1,4 +1,4 @@
-h1 {
+/* h1 {
   font-weight: bold;
   margin: 0;
 }
@@ -82,7 +82,6 @@ input {
   width: 40px;
 }
 
-/* Container */
 .container {
   background-color: #ffffff;
   border-radius: 10px;
@@ -94,7 +93,6 @@ input {
   min-height: 480px;
 }
 
-/* Form Container */
 .form-container {
   position: absolute;
   top: 0;
@@ -156,9 +154,6 @@ input {
 }
 
 .overlay {
-  /* background: #ff416c ;
-  background: -webkit-linear-gradient(to right, #ff4b2b, #ff416c);
-  background: linear-gradient(to right, #ff4b2b, #ff416c); */
   background-image: linear-gradient(to right top, #5db6bb, #5fbbc1, #62c1c8, #64c6ce, #67ccd5, #6dd0d9, #73d5de, #79d9e2, #84dde5, #8ee1e9, #98e5ec, #a2e9f0);
   background-repeat: no-repeat;
   background-size: cover;
@@ -182,7 +177,6 @@ input {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  /* padding: 0 40px; */
   text-align: center;
   top: 0;
   height: 100%;
@@ -206,4 +200,4 @@ input {
 
 .container.right-panel-active .overlay-right {
   transform: translateX(20%);
-}
+} */

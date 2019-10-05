@@ -1,43 +1,20 @@
-import React, { useState } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import '../index.css'
+import React from 'react'
+import './index.css'
 
 export default () => {
-  // const dispatch = useMyDispatch()
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-
-  const handleSignIn = e => {
-    // e.preventDefault()
-    // const payload = {
-    //   email, password
-    // }
-    // // console.log(payload)
-    // dispatch(signInWithEmail(payload))
-  }
   return (
-    <form onSubmit={handleSignIn}>
-      <h1>Sign In</h1>
-      <div className="social-container">
-        <a href="#" className="social"> <FontAwesomeIcon icon={['fab', 'facebook']}/> </a>
-        <a href="#" className="social"> <FontAwesomeIcon icon={['fab', 'google']}/> </a>
-        <a href="#" className="social"> <FontAwesomeIcon icon={['fab', 'microsoft']}/> </a>
+    <>
+      <div id='form-container'>
+        <form id="form-input">
+          <h3 style={{fontSize: '1.5rem'}}>Signin with your account.</h3>
+          <label>Email</label>
+          <input type="email" />
+          <label>Password</label>
+          <input type="password" />
+          <button type="">Submit</button>
+        </form>
+        <span>Don't have an account? <a href="">Signup</a> </span>
       </div>
-      <span>or use your account</span>
-      <input 
-        type="email" 
-        placeholder="Email" 
-        value={email} 
-        onChange={e => setEmail(e.target.value)} 
-      />
-      <input 
-        type="password" 
-        placeholder="Password" 
-        value={password} 
-        onChange={e => setPassword(e.target.value)} 
-      />
-      <a href="#">Forgot your password?</a>
-      <button type="submit">Sign In</button>
-    </form>
+    </>
   )
 }
