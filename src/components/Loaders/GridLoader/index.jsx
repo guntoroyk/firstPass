@@ -13,7 +13,7 @@ export default (props) => {
   const loading = props.loading
   
   return (
-    <div className='sweet-loading' id="box">
+    <div data-testid="grid-loader" className='sweet-loading' id="box">
       <GridLoader
         css={ override }
         sizeUnit={"px"}

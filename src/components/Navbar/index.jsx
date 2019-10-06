@@ -34,7 +34,7 @@ export default () => {
   }
   return (
    <>
-    <Navbar className="navbar-custom">
+    <Navbar data-testid="navin" className="navbar-custom">
       <Navbar.Brand className="navbar-brand" href="" onClick={ goToHome }> <FontAwesomeIcon className="icon" icon="unlock-alt" style={{cursor: 'pointer'}}/> </Navbar.Brand>
       <Nav className="ml-auto mr-1">
 
