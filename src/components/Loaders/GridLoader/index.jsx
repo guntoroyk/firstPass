@@ -1,6 +1,6 @@
 import React from 'react'
 import { css } from '@emotion/core'
-import { RiseLoader } from 'react-spinners'
+import { GridLoader } from 'react-spinners'
 import './index.css'
 
 const override = css`
@@ -14,7 +14,7 @@ export default (props) => {
   
   return (
     <div className='sweet-loading' id="box">
-      <RiseLoader
+      <GridLoader
         css={ override }
         sizeUnit={"px"}
         size={15}

@@ -2,10 +2,10 @@ import React, { useReducer } from 'react'
 
 let reducer = (state, action) => {
   switch (action.type) {
-    case 'SET_RIGHT_PANEL_ACTIVE':
+    case 'SET_SIGNUP':
       return {
         ...state,
-        rightPanelActive: action.value
+        signup: action.payload
       }
     default:
       return { ...state }
@@ -13,7 +13,7 @@ let reducer = (state, action) => {
 }
 
 const initialState = {
-  rightPanelActive: false,
+  signup: false,
 }
 
 export const AuthContext = React.createContext(initialState)

@@ -1,0 +1,35 @@
+.password-card {
+  -webkit-box-shadow: 6px 7px 3px -5px rgba(97,97,97,1);
+  -moz-box-shadow: 6px 7px 3px -5px rgba(97,97,97,1);
+  box-shadow: 6px 7px 3px -5px rgba(97,97,97,1);
+  margin: 13px 13px;
+  transition: transform 80ms ease-in;
+}
+
+.password-card:hover {
+  -webkit-box-shadow: 0px 3px 7px 0px rgba(166,166,166,1);
+  -moz-box-shadow: 0px 3px 7px 0px rgba(166,166,166,1);
+  box-shadow: 0px 3px 7px 0px rgba(166,166,166,1);
+  transform: scale(1.1)
+}
+
+#button-control button {
+  border: none;
+  background-color: transparent;
+  font-size: 1.1rem;
+  color: #70C9CE;
+  margin: 0 2px;
+  transition: transform 80ms ease-in;
+}
+
+#button-control button:hover {
+  transform: scale(1.2)
+}
+
+#button-control button:focus {
+  outline: none;
+}
+
+#button-control button:active {
+  transform: scale(0.9)
+}

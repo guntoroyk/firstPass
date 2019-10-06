@@ -1,5 +1,6 @@
 .navbar-custom {
-  background-color: rgba(122, 228, 228, 0.527);
+  /* background-color: rgba(122, 228, 228, 0.527); */
+  background-color: hsla(183, 33%, 52%, 0.527);
   /* box-shadow: 3px 10px 23px -8px rgba(122,228,228,1); */
 }
 

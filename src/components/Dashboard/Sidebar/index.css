@@ -1,0 +1,33 @@
+.sidebar {
+  width: 20%;
+  /* height: 100%; */
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background-color: #3C4A54;
+}
+
+.sidebar li a {
+  display: block;
+  color: #899294;
+  text-decoration: none;
+  padding: 13px 15px;
+  font-weight: bold;
+}
+
+.sidebar li a:hover {
+  background-color: #22303A;
+  color: rgb(240, 240, 240);
+}
+
+.sidebar .nav-collapse {
+  height: 57px;
+}
+.sidebar .nav-collapse a {
+  padding: 16.3px 15px;
+}
+
+.sidebar .active {
+  background-color: #22303A;
+  color: white !important;  
+}

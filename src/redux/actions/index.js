@@ -1,4 +1,6 @@
-import { firebaseAuth } from '../../apis/firebase'
+import { firebaseAuth, db, timestamp } from '../../apis/firebase'
+const passwords = db.collection('passwords')
+
 export const signUpWithEmail = (payload) => dispatch => {
   dispatch({
     type: 'SET_LOADING',
@@ -16,6 +18,7 @@ export const signUpWithEmail = (payload) => dispatch => {
     })
   })
   .catch(error => {
+    console.log(error)
     dispatch({
       type: 'SET_ERROR',
       payload: error
@@ -56,6 +59,32 @@ export const signInWithEmail = (payload) => dispatch => {
   })
 }
 
+export const signOut = () => dispatch => {
+  dispatch({
+    type: 'SET_LOADING',
+    payload: false
+  })
+  firebaseAuth.signOut().then(function() {
+    dispatch({
+      type: 'SET_USER',
+      payload: null
+    })
+    dispatch({
+      type: 'SET_LOADING',
+      payload: false
+    })
+  }).catch(function(error) {
+    dispatch({
+      type: 'SET_ERROR',
+      payload: error
+    })
+    dispatch({
+      type: 'SET_LOADING',
+      payload: false
+    })
+  });
+} 
+
 export const checkLoggedUser = () => dispatch => {
   dispatch({
     type: 'SET_LOADING',
@@ -69,7 +98,7 @@ export const checkLoggedUser = () => dispatch => {
       })
       dispatch({
         type: 'SET_LOADING',
-        payload: true
+        payload: false
       })
     } else {
       dispatch({
@@ -78,8 +107,80 @@ export const checkLoggedUser = () => dispatch => {
       })
       dispatch({
         type: 'SET_LOADING',
-        payload: true
+        payload: false
       })
     }
   })
+}
+
+export const addPassword = (payload) => dispatch => {
+  passwords.add({
+    name: payload.name,
+    url: payload.url,
+    username: payload.username,
+    password: payload.password,
+    uid: payload.uid,
+    createdAt: timestamp,
+    updatedAt: timestamp
+  })
+  .then(docRef => {
+    console.log('berhasil add password', docRef)
+  })
+  .catch(error => {
+    console.log('gagal add password', error)
+  })
+}
+
+export const updatePassword = (payload) => dispatch => {
+  let aPassword = passwords.doc(payload.id)
+  console.log(aPassword)
+
+  return aPassword.update({
+    name: payload.name,
+    url: payload.url,
+    username: payload.username,
+    password: payload.password,
+    updatedAt: timestamp
+  })
+  .then(() => {
+    console.log('document added succesfully')
+  })
+  .catch(error => {
+    console.log('error updating document', error)
+  })
+}
+
+export const fetchPasswords = (uid) => dispatch => {
+  dispatch({
+    type: 'SET_PASS_LOADING',
+    payload: true
+  })
+  passwords.orderBy('createdAt', 'desc').where("uid", "==", uid)
+    .onSnapshot(querySnapshot => {
+      const passwordsList = []
+      querySnapshot.docs.forEach(doc => {
+        let password = doc.data()
+        let id = doc.id
+        passwordsList.push({...password, id})
+      })
+      dispatch({
+        type: 'FETCH_PASSWORDS',
+        payload: passwordsList 
+      })
+      dispatch({
+        type: 'SET_PASS_LOADING',
+        payload: false
+      })
+    })
+}
+
+export const deletePassword = (id) => dispatch => {
+  console.log(id)
+  passwords.doc(id).delete()
+    .then(() => {
+      console.log('Document successfully deleted!')
+    })
+    .catch(error => {
+      console.log('error delete password', error)
+    })
 }

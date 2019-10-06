@@ -1,0 +1,25 @@
+.btnSave, .btnCancel {
+  padding: 3px 30px;
+  border-radius: 5px;
+  border: none;
+  font-size: 0.95em;
+}
+
+.btnSave {
+  background-color: #71c9ce;
+  color: rgb(247, 247, 247);
+}
+.btnSave:hover {
+  background-color: #4aa2a7;
+  color: rgb(247, 247, 247);
+}
+
+.btnCancel {
+  background-color: rgb(233, 233, 233);
+  /* background-color: rgb(184, 183, 183); */
+  color: black;
+}
+.btnCancel:hover {
+  background-color: rgb(194, 189, 189);
+  color: black;
+}

@@ -1,35 +1,69 @@
 import React, { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
+import { useSelector, useDispatch } from 'react-redux'
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom"
+import { checkLoggedUser } from './redux/actions'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faKey, faUnlockAlt } from '@fortawesome/free-solid-svg-icons'
+import { 
+  faKey, 
+  faUnlockAlt, 
+  faTimes, 
+  faHome, 
+  faLock, 
+  faAddressBook, 
+  faStickyNote, 
+  faPlus,
+  faInfoCircle,
+  faPen,
+  faTrash,
+  faCheck,
+  faChevronCircleLeft
+} from '@fortawesome/free-solid-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
 import Auth from './containers/Auth'
-import Home from './containers/Home';
-// import Dashboard from './containers/Dashboard'
+import Home from './containers/Home'
+import RiseLoader from './components/Loaders/RiseLoader'
+import Dashboard from './containers/Dashboard'
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-
-library.add(fab, faKey, faUnlockAlt)
+library.add(
+  fab,
+  faKey, 
+  faUnlockAlt, 
+  faTimes, 
+  faHome, 
+  faLock, 
+  faAddressBook, 
+  faStickyNote, 
+  faPlus,
+  faInfoCircle,
+  faPen,
+  faTrash,
+  faCheck,
+  faChevronCircleLeft
+)
 
 function App() {
   const dispatch = useDispatch()
+  const { user, loading } = useSelector(state => state.auth)
   useEffect(() => {
-    // dispatch(checkLoggedUser())
+    dispatch(checkLoggedUser())
     // eslint-disable-next-line
   }, [])
   return (
     <div className="App">
         <Router>
           <Switch>
+            <Route path="/dashboard">
+              { loading ? <RiseLoader loading={loading} /> : user ? <Dashboard /> : <Redirect to="/"/> }
+            </Route>
             <Route path="/auth">
-              <Auth />
+              { loading ? <RiseLoader loading={loading} /> : <Auth /> }
             </Route>
             <Route path="/">
-              <Home />
+              { loading ? <RiseLoader loading={loading} /> : <Home /> }
             </Route>
           </Switch>
         </Router>
