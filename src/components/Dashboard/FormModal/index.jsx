@@ -21,6 +21,8 @@ export default (props) => {
 
   const [percentage, setPercentage] = useState(0)
   const [error, setError] = useState(null)
+
+  const [showPassword, setShowPassword] = useState(false)
   
   const uid = useSelector(state => state.auth.user.uid)
   // const { error } = useSelector( state => state.passwordLists)
@@ -217,13 +219,20 @@ export default (props) => {
             </Form.Group>
             <Form.Group controlId="formBasicPassword"style={{ width: '100%'}}>
               <Form.Label>Site Password</Form.Label>
-              <Form.Control 
-                type="password" 
-                placeholder="Password" 
-                value={ password }
-                onChange={ e => handlePassword(e.target.value) }
-                readOnly={ modalReadOnly }
-              />
+              <div className="d-flex align-items-center">
+                <Form.Control 
+                  type={ showPassword ? "text" : "password"} 
+                  placeholder="Password" 
+                  value={ password }
+                  onChange={ e => handlePassword(e.target.value) }
+                  readOnly={ modalReadOnly }
+                />
+                <FontAwesomeIcon 
+                  style={{cursor: 'pointer', marginLeft: 5}} 
+                  icon={ showPassword ? "eye": "eye-slash" } 
+                  onClick={ () => setShowPassword(!showPassword) }
+                />
+              </div>
             </Form.Group>
           </div>
           <div className="align-self-end">

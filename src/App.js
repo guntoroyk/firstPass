@@ -17,7 +17,9 @@ import {
   faPen,
   faTrash,
   faCheck,
-  faChevronCircleLeft
+  faChevronCircleLeft,
+  faEye,
+  faEyeSlash
 } from '@fortawesome/free-solid-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 
@@ -42,7 +44,9 @@ library.add(
   faPen,
   faTrash,
   faCheck,
-  faChevronCircleLeft
+  faChevronCircleLeft,
+  faEye,
+  faEyeSlash
 )
 
 function App() {
