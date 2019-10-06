@@ -49,6 +49,7 @@ export default () => {
           <h3 style={{fontSize: '1.5rem'}}>Signin with your account.</h3>
           <label>Email</label>
           <input 
+            data-testid="login-email"
             type="email"
             value={ email }
             onChange={ e => setEmail(e.target.value)}
@@ -59,7 +60,7 @@ export default () => {
             value={ password }
             onChange={ e => setPassword(e.target.value)}
           />
-          <button type="submit">Sign In</button>
+          <button data-testid="login-btn" type="submit">Sign In</button>
         </form>
         <span>Don't have an account? <a href="" onClick={ handleClick }>Signup</a> </span>
       </div>

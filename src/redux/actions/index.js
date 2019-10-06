@@ -1,12 +1,15 @@
-import { firebaseAuth, db, timestamp } from '../../apis/firebase'
-const passwords = db.collection('passwords')
+// import { auth, db, timestamp } from '../../apis/firebase'
+// const passwords = db.collection('passwords')
+
+import { auth, timestamp } from '../../apis/firebase'
+import passwords from '../../apis/db'
 
 export const signUpWithEmail = (payload) => dispatch => {
   dispatch({
     type: 'SET_LOADING',
     payload: true
   })
-  firebaseAuth.createUserWithEmailAndPassword(payload.email, payload.password)
+  auth.createUserWithEmailAndPassword(payload.email, payload.password)
   .then(user => {
     dispatch({
       type: 'SET_USER',
@@ -35,7 +38,7 @@ export const signInWithEmail = (payload) => dispatch => {
     type: 'SET_LOADING',
     payload: true
   })
-  firebaseAuth.signInWithEmailAndPassword(payload.email, payload.password)
+  auth.signInWithEmailAndPassword(payload.email, payload.password)
   .then(user => {
     dispatch({
       type: 'SET_USER',
@@ -64,7 +67,7 @@ export const signOut = () => dispatch => {
     type: 'SET_LOADING',
     payload: false
   })
-  firebaseAuth.signOut().then(function() {
+  auth.signOut().then(function() {
     dispatch({
       type: 'SET_USER',
       payload: null
@@ -90,7 +93,7 @@ export const checkLoggedUser = () => dispatch => {
     type: 'SET_LOADING',
     payload: true
   })
-  firebaseAuth.onAuthStateChanged(user => {
+  auth.onAuthStateChanged(user => {
     if (user) {
       dispatch({
         type: 'SET_USER',

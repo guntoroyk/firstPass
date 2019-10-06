@@ -10,8 +10,8 @@ export default () => {
   const { user } = useSelector(state => state.auth)
   return (
     <>
-      <div className="home">
-        <Navbar />
+      <div data-testid="landing-page" className="home">
+        <Navbar data-testid="navbar" />
         <div style={{width: '30vw', position: "relative", top: '15vh', left: '20vw', color: 'white'}}>
           <p style={{fontSize: '3rem', fontWeight: '600', marginBottom: 0}}>FirstPass!</p>
           <p style={{fontSize: '3rem', fontWeight: '600', marginTop: 0,
