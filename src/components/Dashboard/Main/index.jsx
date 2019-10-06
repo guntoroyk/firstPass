@@ -13,7 +13,7 @@ import { fetchPasswords } from '../../../redux/actions'
 export default () => {
   const [modalShow, setModalShow] = useState(false)
   const [dataPasswords, setDataPasswords] = useState(null)
-  const [search, setSearch] = useState(null)
+  const [search, setSearch] = useState('')
   const { user } = useSelector(state => state.auth)
   const { passwords, loading } = useSelector(state => state.passwordLists)
   const dispatch = useDispatch()

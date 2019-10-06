@@ -5,6 +5,8 @@ import { signInWithEmail } from '../../../redux/actions'
 import './index.css'
 
 import Swal from 'sweetalert2'
+import firebase, { auth } from '../../../apis/firebase'
+import SocialButton from 'react-firebaseui/StyledFirebaseAuth'
 
 export default () => {
   const { dispatch } = useContext(AuthContext)
@@ -12,6 +14,16 @@ export default () => {
   const [password, setPassword] = useState('')
   const reduxDisptach = useDispatch()
   const error = useSelector(state => state.auth.error)
+
+  const uiConfig = {
+    signInFlow: 'popup',
+    signInOptions: [
+      firebase.auth.GithubAuthProvider.PROVIDER_ID
+    ],
+    callbacks: {
+      signInSuccessWithAuthResult: () => false
+    } 
+  };
 
   const handleClick = e => {
     e.preventDefault()
@@ -63,6 +75,11 @@ export default () => {
           <button data-testid="login-btn" type="submit">Sign In</button>
         </form>
         <span>Don't have an account? <a href="" onClick={ handleClick }>Signup</a> </span>
+        <span style={{ fontSize: '0.9rem' }}>or signin with</span>
+        <SocialButton 
+          uiConfig={ uiConfig }
+          firebaseAuth={ auth }
+        />
       </div>
     </>
   )
